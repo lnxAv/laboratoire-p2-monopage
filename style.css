@@ -1,0 +1,175 @@
+/* VARIABLES */
+:root {
+    --color-light: #F0EBE8;
+    --color-dark: #232120;
+    --color-light-accent: #CAF291;
+    --color-dark-accent: #FFB3DB;
+    --text-xs: 1rem;
+    --text-sm: 1.33rem;
+    --text-m: 3rem;
+    --text-l: 5rem;
+    --text-xl: 8rem;
+    --space-s: 0.25rem;
+    --space-m: 1rem;
+    --space-l: 2rem;
+    --space-xl: 16rem;
+}
+ /* FONTS */
+@font-face {
+    font-family: "Thunder-Bolder";
+    src: url(/Thunder-VF.ttf) format("truetype");
+    font-variation-settings: 'wght' 1000;
+}
+
+@font-face {
+    font-family: "Thunder-Bold";
+    src: url(/Thunder-VF.ttf) format("truetype");
+    font-variation-settings: 'wght' 700;
+      line-height: 0.85;
+}
+
+@font-face {
+    font-family: "Thunder-Regular";
+    src: url(/Thunder-VF.ttf) format("truetype");
+    font-variation-settings: 'wght' 500;
+}
+
+@font-face {
+    font-family: "Garamond-Bold";
+    src: url(//EBGaramond-VariableFont_wght.ttf) format("truetype");
+    font-variation-settings: 'wght' 700, 'caps' small-caps;
+    font-variant-caps: small-caps;
+}
+
+@font-face {
+    font-family: "Garamond-Regular";
+    src: url(//EBGaramond-VariableFont_wght.ttf) format("truetype");
+    font-variation-settings: 'wght' 500;
+}
+/* KEYFRAMES */
+
+@keyframes slide-up {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+    
+}
+/* TAGS */
+html{
+    font-size: 16px;
+    background-color: var(--color-light);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2 {
+    font-size: var(--text-xs);
+}
+h3 {
+    font-size: var(--text-sm);
+}
+h4 {
+    font-size: var(--text-m);
+}
+h5 {
+    font-size: var(--text-l);
+}
+h6 {
+    font-size: var(--text-xl);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Thunder-Bold";
+    color: var(--color-dark);
+    line-height: 0.85;
+    transform: translateY(15%)
+}
+
+p {
+    font-family: "Garamond-Regular";
+    color: var(--color-dark);
+}
+
+b {
+    font-family: "Garamond-Bold";
+    color: var(--color-dark);
+}
+
+body {
+    width: 100%;;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    border: none;
+    background: transparent;
+}
+
+button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: transparent;
+    padding: var(--space-s) var(--space-m);
+    border-radius: var(--space-m);
+}
+
+button *, button > * {
+    text-transform: uppercase;
+}
+
+button.dark {
+    background-color: var(--color-dark-accent);
+    color: var( --color-dark);
+    border: 2px solid var(  --color-dark);
+}
+
+button.light {
+    background-color: var(--color-light-accent);
+    color: var( --color-light);
+    border: 2px solid var(  --color-dark);
+}
+
+span:hover {
+    animation: slide-up 1s ease-in-out;
+}
+
+/* CLASSES */
+.company-logo {
+    transform: translateY(10px) rotate(-10deg);
+}
+.grainy-background::before {
+  content: "";
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 182px;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
