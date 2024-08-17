@@ -9,16 +9,29 @@
 </head>
 
 <body class="">
-    <div class="header-info">
-        hello
+    <div class="row space-between">
+        <div>
+        <button class="white">
+            <h2> +1 (555) 555-5555 </h2>
+        </button>
+        </div>
+        <div class="row ">
+            <button class="white">
+                <h2> the-club@retro.company </h2>
+            </button>
+            <button class="white" onclick="goToNewMember()">
+                <h2> Join the Club </h2>
+            </button>
+        </div>
+
     </div>
     <header id="header">
         <nav>
-            <button  onclick="window.location.href='index.html'">
+            <button  onclick="goToMenu()">
                 <h3> Menu </h3>
             </button>
-            <object class="company-logo" data="Company.svg " type="image/svg+xml" height="50rem" width="50rem"></object>
-            <button class="dark">
+            <object class="company-logo" data="/public/Company.svg " type="image/svg+xml" height="50rem" width="50rem"></object>
+            <button class="dark" onclick="goToNewMember()">
                 <h3> Login</h3>
             </button>
         </nav>
@@ -26,24 +39,44 @@
     <main>
         <div class="hero">
             <div class="hero-text">
-                <h6> Join the</h6>
-                <div class="hero-text-icon">xx</div>
+                <div class="hero-text-icon">
+                    <h6><u>Just join</u> </h6>
+                </div>
+                <h6> the</h6>
             </div>
             <div class="hero-image">
                 <div class="hero-image-text">
+                    <div class="corner right-top"></div>
+                    <div class="corner left-top"></div>
                     <h6> Club </h6>
                 </div>
-                <iframe>
-                </iframe>
+                <div class="hero-image-content" style="padding:66.67% 0 0 0;position:relative;">
+                    <iframe src="https://player.vimeo.com/video/564151609?h=3bd0648619&autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h5> Club Members </h5>
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et lorem dapibus, molestie tortor varius, vulputate ligula. In nec massa suscipit, aliquet mi sit amet, convallis sapien. Curabitur feugiat eu metus quis consequat. Vivamus in mollis elit. Sed molestie nunc dapibus, tincidunt libero sit amet, imperdiet orci. Ut varius semper ornare. Morbi ullamcorper lacus vitae neque posuere tincidunt. Ut nec sapien erat. Cras lacinia turpis mauris, eget viverra neque scelerisque nec. Suspendisse fermentum ex sed bibendum semper. Nulla in congue dui, in malesuada neque. Donec dui nibh, rutrum eu mollis a, lacinia a neque. Donec ut dapibus massa. Phasellus tincidunt varius commodo. </p>
+                </div>
             </div>
         </div>
-        <div>
+        <div class="join-button">
+            <object
+                class="big-star" 
+                data="/public/star.svg" 
+                type="image/svg+xml" 
+                height="100rem" 
+                width="100rem">
+            </object>
             <div>
-                <h5> Club Members </h5>
-                <p> ...</p>
+                <button class="white big" onclick="goToNewMember()">
+                    <h5>Join</h5>
+                </button>
             </div>
         </div>
     </main>
+    <script src="https://player.vimeo.com/api/player.js"></script>
 </body>
 
 </html>

@@ -12,3 +12,15 @@ function myFunction() {
     header.classList.remove("sticky");
   }
 }
+
+const goToMenu = () => {
+  window.location.href = "index.html";
+};
+
+const goToNewMember = () => {
+  window.location.href = "newMember.html";
+};
+
+const goToSaisie = () => {
+  window.location.href = "saisie.html";
+};

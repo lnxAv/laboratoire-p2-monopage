@@ -1,0 +1,82 @@
+.hero {
+    padding-top: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    width: 100%;
+}
+
+.hero-text {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--space-m);
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0 var(--space-m);
+}
+.hero-text-icon {
+    background-color: var(--color-light-accent);
+    border-radius: var(--border-radius);
+    display: flex;
+}
+
+.hero-image {
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+
+.hero-image-text {
+    position: absolute;
+    z-index: 40;
+    right: 0;
+    padding: var(--space-m);
+    padding-top: 0;
+    padding-right: 0;
+    background-color: var(--color-light);
+    border-bottom-left-radius: calc(var(--border-radius) - var(--border-radius-s));
+}
+
+.hero-image-content iframe {
+  border-radius: var(--border-radius);
+}
+
+.corner {
+  width: calc(var(--border-radius) - var(--border-radius-s));
+  height:calc(var(--border-radius) - var(--border-radius-s));
+  background-image: radial-gradient(
+    circle at 100% 100%, 
+    transparent calc(var(--border-radius) - var(--border-radius-s)), 
+    var(--color-light) calc(calc(var(--border-radius) - var(--border-radius-s)) + 0.5px)
+    );
+}
+
+.corner.right-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-100%, 0%) rotate(90deg);
+}
+
+.corner.left-top {
+    position: absolute;
+    bottom: calc(var(--space-m) * -1);
+    right: 0;
+    transform: translate(0, 0%) rotate(90deg);
+}
+
+.join-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-m);    
+}
+
+.join-button > div {
+    position: absolute;
+}
