@@ -45,8 +45,7 @@ function validateForm(event) {
         if(testRegex) {
             emailMessage.classList.add("invalid");
             emailMessage.innerHTML = "Please enter a valid email";
-        }
-        if(testSaved) {
+        }else if(testSaved) {
             emailMessage.classList.add("invalid");
             emailMessage.innerHTML = "You already joined the club";
         }
