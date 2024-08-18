@@ -42,7 +42,7 @@ function validateForm(event) {
         return true;
     } else {
         const emailMessage = document.getElementById("email-message");
-        if(testRegex) {
+        if(!testRegex) {
             emailMessage.classList.add("invalid");
             emailMessage.innerHTML = "Please enter a valid email";
         }else if(testSaved) {
