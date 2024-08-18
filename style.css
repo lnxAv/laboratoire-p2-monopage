@@ -4,7 +4,7 @@
     --color-dark: #232120;
     --color-light-accent: #CAF291;
     --color-dark-accent: #FFB3DB;
-    --text-xs: 1rem;
+    --text-xs: 0.85rem;
     --text-sm: 1.5rem;
     --text-m: 3rem;
     --text-l: 5rem;
@@ -52,6 +52,8 @@
 
 /* TAGS */
 html{
+    position: relative;
+    width: 100vw;
     font-size: 13px;
     background-color: var(--color-dark);
     scroll-behavior: smooth;
@@ -60,6 +62,7 @@ html{
 *{
     padding: 0;
     margin: 0;
+    z-index: 50;
 }
 
 h1, h2 {
@@ -96,17 +99,20 @@ b {
 }
 
 body {
+    position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     overflow-x: hidden;
-    z-index: 50;
 }
 
 main {
+    position: relative;
     background-color: var(--color-light);
     padding: var(--space-m) var(--space-m);
-    padding-top: var(--space-,);
-    min-height: 100%;
+    padding-top: var(--space-xl);
+    min-height: 100vh;
+    height: 100%;
+
 }
 /* HEADER */
 header {
@@ -136,11 +142,14 @@ nav {
 }
 
 form {
+    position: relative;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     gap: var(--space-m);
     padding: var(--space-m) var(--space-xl);
-    border: 1px solid var(--color-dark);
 }
 
 .form-row {
@@ -150,9 +159,51 @@ form {
     gap: var(--space-sm);
 }
 
+.form-row-label {
+    display: flex;
+    flex-direction: row; 
+    justify-content: start;
+    align-items: flex-end;
+    gap: var(--space-s);
+}
+
+.label-message {
+    font-family: "Garamond-Regular";
+    font-size: var(--text-xs);
+    padding-bottom: var(--space-s);
+    transform: translateY(-10%);
+}
+.label-message.invalid::after {
+    content: "*";
+    color: red;
+}
+
 input {
+    border-color: var(--color-dark);
+}
+
+input:focus{
+    border-color: var(--color-dark-accent);
+}
+
+input:not([type="submit"]) {
     font-family: "Garamond-Regular";
     font-size: var(--text-sm);
+    padding: var(--space-s) var(--space-m);
+}
+
+input:required:invalid {
+    border-color: red;
+}
+
+input:required:valid {
+    border-color: var(--color-light-accent);
+}
+
+form label {
+    font-family: "Thunder-Bold";
+    font-size: var(--text-m);
+    color: var(--color-dark);
 }
 
 button {
@@ -199,8 +250,6 @@ button.big {
 
 button[type="submit"] {
     width: 100%;
-    margin: auto;
-    max-width: 300px;
 }
 
 span:hover {
@@ -212,6 +261,7 @@ span:hover {
     transform: translateY(1rem) rotate(-10deg) scale(1.5);
     width: 10rem;
     height: 3rem;
+    z-index: 100;
 }
 
 .grainy-background::before{
@@ -244,8 +294,6 @@ span:hover {
     pointer-events: none;
     width: 100%;
     height: 100%;
-    margin: var(--space-l);
-
 }
 
 /* MEDIA QUERIES */

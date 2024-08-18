@@ -1,5 +1,4 @@
 .hero {
-    padding-top: var(--space-xl);
     display: flex;
     flex-direction: column;
     gap: var(--space-xl);
@@ -32,10 +31,9 @@
 
 .hero-image-text {
     position: absolute;
-    z-index: 40;
+    z-index: 51;
     right: 0;
     padding: var(--space-m);
-    padding-top: 0;
     padding-right: 0;
     background-color: var(--color-light);
     border-bottom-left-radius: calc(var(--border-radius) - var(--border-radius-s));
