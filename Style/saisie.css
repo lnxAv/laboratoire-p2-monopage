@@ -1,0 +1,8 @@
+#welcome-message {
+  font-family: "Garamond-Regular";
+  font-size: var(--text-m);
+  text-align: center;
+  word-spacing:9999px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

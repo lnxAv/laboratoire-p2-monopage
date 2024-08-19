@@ -3,8 +3,12 @@
 
 <head>
     <title>The Retro Company Club</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="/Style/style.css">
+    <link rel="stylesheet" href="/Style/saisie.css">
+    <script src="/JS/main.js" defer></script>
+    <script src="/JS/email.js"></script>
+    <script src="/JS/formObject.js"></script>
+
 </head>
 
 <body class="">
@@ -19,7 +23,7 @@
                 <h2> the-club@retro.company </h2>
             </button>
             <button class="white" onclick="goToNewMember()">
-                <h2> Join the Club </h2>
+                <h2> Rejoint le club  </h2>
             </button>
         </div>
 
@@ -31,17 +35,180 @@
             </button>
             <object class="company-logo" data="/public/Company.svg " type="image/svg+xml" height="50rem" width="50rem"></object>
             <button class="dark" onclick="goToNewMember()">
-                <h3> Login</h3>
+                <h3> connexion</h3>
             </button>
         </nav>
     </header>
     <main>
         <div class="form-container">
-            <div id="welcome-message" >hello @</div>
+            <div id="welcome-message" ></div>
             <form id="saisie-form">
             </form>
         </div>
     </main>
-    <script src="saisie.js" defer></script>
+    <script defer>
+        /* FORM SHAPE
+        * nom, prenom, age, ageCounter, oldMember, oldMemberYears, phone, rules, submit
+        */
+       const formShape = {
+        nom: {
+            type: "text",
+            title: "Nom",
+            required: true,
+            onChange: function (key, form, utils) {
+            const value = document.getElementById(key).value;
+            const regex = /^[a-zA-Z]+$/;
+            if (!regex.test(value)) {
+                utils.setMessage("Nom invalide", "nom");
+                utils.setValidity(false, "nom");
+                return false;
+            } else if (value.length < 3) {
+                utils.setMessage("Nom trop court", "nom");
+                utils.setValidity(false, "nom");
+                return false;
+            } else {
+                utils.setMessage("", "nom");
+                utils.setValidity(true, "nom");
+                return true;
+            }
+            },
+        },
+        prenom: {
+            type: "text",
+            title: "Prenom",
+            required: true,
+            onChange: function (key, form, utils) {
+            const value = document.getElementById(key).value;
+            const regex = /^[a-zA-Z]+$/;
+            if (!regex.test(value)) {
+                utils.setMessage("Prenom invalide", "prenom");
+                utils.setValidity(false, "prenom");
+                return false;
+            } else if (value.length < 3) {
+                utils.setMessage("Prenom trop court", "prenom");
+                utils.setValidity(false, "prenom");
+                return false;
+            } else {
+                utils.setMessage("", "prenom");
+                utils.setValidity(true, "prenom");
+                return true;
+            }
+            },
+        },
+        age: {
+            type: "date",
+            title: "Age",
+            required: true,
+            onChange: function (key, form, utils) {
+            const value = document.getElementById(key).value;
+            const age = calculateAge(value);
+            document.getElementById("ageCounter").value = age;
+            if (age < 18) {
+                utils.setMessage("vous êtes trop jeune.", "age");
+                utils.setValidity(false, "age");
+                return false;
+            } else {
+                utils.setMessage("", "age");
+                utils.setValidity(true, "age");
+                return true;
+            }
+            },
+        },
+        ageCounter: {
+            type: "hidden",
+            default: 0,
+        },
+        oldMember: {
+            type: "radio",
+            default: "non",
+            title: "Je suis déjà membre",
+            options: ["oui", "non"],
+            onChange: (key, form, utils) => {
+            const fieldSet = document.getElementById(key);
+            const value = fieldSet.querySelector("input:checked").value;
+            if (value === "oui") {
+                utils.displayRow("oldMemberYears", true);
+            } else {
+                utils.displayRow("oldMemberYears", false);
+            }
+            return true;
+            },
+        },
+        oldMemberYears: {
+            type: "select",
+            title: "Années d'activité",
+            display: false,
+            disable: (key, form, utils) => {
+            const ageCounter = document.getElementById("ageCounter");
+            return ageCounter.value < 18;
+            },
+            options: () => {
+            const ageCounter =
+                Number(document.getElementById("ageCounter")?.value) || 0;
+            const options = [];
+            if (ageCounter >= 18) {
+                const yearsPossible = ageCounter - 18 + 1;
+                const currentYear = Number(new Date().getFullYear());
+                for (let i = 0; i < yearsPossible; i++) {
+                options.push(currentYear - i);
+                }
+            }
+            return options;
+            },
+        },
+        phone: {
+            type: "tel",
+            title: "Téléphone",
+            required: true,
+            pattern: "[0-9]{3}-[0-9]{3}-[0-9]{4}",
+            onChange: function (key, form, utils) {
+            const value = document.getElementById(key).value;
+            const regex = /[0-9]{3}-[0-9]{3}-[0-9]{4}/;
+            if (!regex.test(value) || value.length !== 12) {
+                utils.setMessage("Format invalide (ex: 000-000-0000)", "phone");
+                utils.setValidity(false, "phone");
+                return false;
+            } else {
+                utils.setMessage("", "phone");
+                utils.setValidity(true, "phone");
+                return true;
+            }
+            return true;
+            },
+        },
+        rules: {
+            type: "checkbox",
+            title: "Règles",
+            required: true,
+            options: ["J'accepte les règles"],
+        },
+        submit: {
+            type: "submit",
+            title: "Soummettre",
+            disabled: (key, form, utils) => {
+            return !utils.isValid();
+            },
+        }};
+        // FORM CREATOR
+        const form = new Form("saisie-form", formShape);
+        // INIT THE FORM
+        form.init();
+        // ADD EVENT LISTENERS TO THE FORM
+        form.addEventListeners("submit", (event, utils) => {
+            event.preventDefault();
+            if (utils.isValid()) {
+                alert("Youve joined the club");
+                goToMenu();
+            }
+        });
+        const welcomeMessage = document.getElementById("welcome-message");
+        const loggedEmail = getLogInEmail();
+        if (loggedEmail) {
+            welcomeMessage.innerHTML = "Bonjour, " + loggedEmail;
+        } else {
+           alert("Please login");
+           window.location.href = "/";
+        }
+    </script>
 </body>
 </html>

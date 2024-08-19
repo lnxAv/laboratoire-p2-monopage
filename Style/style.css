@@ -53,7 +53,7 @@
 /* TAGS */
 html{
     position: relative;
-    width: 100vw;
+    width: 100%;
     font-size: 13px;
     background-color: var(--color-dark);
     scroll-behavior: smooth;
@@ -158,6 +158,9 @@ form {
     width: 100%;
     gap: var(--space-sm);
 }
+.form-row.display-none {
+    display: none;
+}
 
 .form-row-label {
     display: flex;
@@ -177,6 +180,25 @@ form {
     content: "*";
     color: red;
 }
+
+fieldset {
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-s);
+    padding: var(--space-s) var(--space-m);
+    padding-bottom: var(--space-m);
+}
+
+
+fieldset label {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Garamond-Regular";
+    font-size: var(--text-sm);
+}
+
 
 input {
     border-color: var(--color-dark);
@@ -200,7 +222,7 @@ input:required:valid {
     border-color: var(--color-light-accent);
 }
 
-form label {
+form .form-row-label > label, fieldset legend {
     font-family: "Thunder-Bold";
     font-size: var(--text-m);
     color: var(--color-dark);
@@ -224,6 +246,10 @@ button *, button > * {
 
 button:hover {
   opacity: 0.8;
+}
+
+button:disabled {
+  opacity: 0.5;
 }
 
 button.dark {
@@ -251,7 +277,7 @@ button.big {
 button[type="submit"] {
     width: 100%;
 }
-
+ 
 span:hover {
     animation: slide-up 1s ease-in-out;
 }
