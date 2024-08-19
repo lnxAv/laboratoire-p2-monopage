@@ -4,7 +4,6 @@
 <head>
     <title>The Retro Company Club</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="newMembers.css">
     <script src="main.js" defer></script>
 </head>
 
@@ -38,32 +37,11 @@
     </header>
     <main>
         <div class="form-container">
-            <form>
-                <h4>Join the Club</h4>
-                <h2>(seriously, it's free)</h2>
-                <div class="form-row">
-                    <div class="form-row-label">
-                        <label for="email">Email</label>
-                        <div id="email-message" class="label-message"></div>
-                    </div>
-                    <input type="email" placeholder="Email" id="email" name="email" required>
-                </div>
-                <input type="hidden" id="saved-email" name="saved-email">
-                <button type="submit" class="white" onclick="validateForm(event)">
-                    <h5>Confirm</h5>
-                </button>
+            <div id="welcome-message" >hello @</div>
+            <form id="saisie-form">
             </form>
-            <div class="form-bg">
-                <object
-                    class="big-star" 
-                    data="/public/star.svg" 
-                    type="image/svg+xml"
-                >
-                </object>
-            </div>
         </div>
     </main>
-    <script src="https://player.vimeo.com/api/player.js"></script>
-    <script src="newMembers.js" defer></script>
+    <script src="saisie.js" defer></script>
 </body>
 </html>

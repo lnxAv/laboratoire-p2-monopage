@@ -18,7 +18,7 @@ const goToMenu = () => {
 };
 
 const goToNewMember = () => {
-  window.location.href = "newMember.html";
+  window.location.href = "newMembers.html";
 };
 
 const goToSaisie = () => {

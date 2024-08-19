@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>The Retro Company Club</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="newMembers.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body class="">
+    <div class="row space-between">
+        <div>
+        <button class="white">
+            <h2> +1 (555) 555-5555 </h2>
+        </button>
+        </div>
+        <div class="row ">
+            <button class="white">
+                <h2> the-club@retro.company </h2>
+            </button>
+            <button class="white" onclick="goToNewMember()">
+                <h2> Join the Club </h2>
+            </button>
+        </div>
+
+    </div>
+    <header id="header">
+        <nav>
+            <button  onclick="goToMenu()">
+                <h3> Menu </h3>
+            </button>
+            <object class="company-logo" data="/public/Company.svg " type="image/svg+xml" height="50rem" width="50rem"></object>
+            <button class="dark" onclick="goToNewMember()">
+                <h3> Login</h3>
+            </button>
+        </nav>
+    </header>
+    <main>
+        <div class="form-container">
+            <form>
+                <h4>Join the Club</h4>
+                <h2>(seriously, it's free)</h2>
+                <div class="form-row">
+                    <div class="form-row-label">
+                        <label for="email">Email</label>
+                        <div id="email-message" class="label-message"></div>
+                    </div>
+                    <input type="email" placeholder="Email" id="email" name="email" required>
+                </div>
+                <input type="hidden" id="saved-email" name="saved-email">
+                <button type="submit" class="white" onclick="validateForm(event)">
+                    <h5>Confirm</h5>
+                </button>
+            </form>
+            <div class="form-bg">
+                <object
+                    class="big-star" 
+                    data="/public/star.svg" 
+                    type="image/svg+xml"
+                >
+                </object>
+            </div>
+        </div>
+    </main>
+    <script src="newMembers.js" defer></script>
+</body>
+</html>
