@@ -1,10 +1,10 @@
 // DATE UTILS
-const calculateAge = (birthday) => {
+function calculateAge(birthday) {
   let years = 0;
   var birthdayTime = Number(new Date(birthday));
   years = Math.floor((new Date().getTime() - birthdayTime) / 31556952000);
   return years;
-};
+}
 
 function toDateInputValue(dateObject) {
   const local = new Date(dateObject);
@@ -21,7 +21,7 @@ function toDateInputValue(dateObject) {
  *               they can be called by the shapeData & the form
  * @param form: the form Element
  * @param formShape: the shape of the form
- * @Returns: an object with the prototypes of the form
+ * @Returns: an object with the prototypes functions
  *    @prototype.isValid(): returns true if the form is valid
  *    @prototype.setValidity(validity, key): sets the validity of the input with the key
  *    @prototype.setMessage(message, key): sets the message of the input with the key
@@ -73,6 +73,7 @@ class FormUtils {
         }
       },
       callAllDisabled: () => {
+        // call the disabled function for each key
         this.keys.forEach((key) => {
           const shapeData = this.formShape[key];
           const input = document.getElementById(key);
@@ -87,7 +88,7 @@ class FormUtils {
         // if the message element is not found, return
         if (!messageElement) return;
         if (message) {
-          // if asked to set a message, set the message
+          // if asked to set a message
           messageElement.innerHTML = message;
         } else {
           // else, set the message to empty
@@ -101,7 +102,7 @@ class FormUtils {
           // if asked to display the row, remove the display-none class
           row.classList.remove("display-none");
         } else {
-          // else, add the display-none class
+          // else, add the display-none classa
           row.classList.add("display-none");
         }
       },
@@ -140,7 +141,7 @@ class Form {
   handleOnDisabled(key, shapeData, input) {
     const { disabled } = shapeData;
     if (disabled instanceof Function) {
-      this.form.addEventListener("change", () => {
+      this.form.addEventListener("input", () => {
         input.disabled = disabled(key, this.form, this.utils.prototype);
       });
     } else if (disabled) {
@@ -217,7 +218,7 @@ class Form {
     let optionsList = [];
     if (options instanceof Function) {
       optionsList = options(key, this.form, this.utils.prototype);
-      form.addEventListener("change", () => {
+      form.addEventListener("input", () => {
         const newOptions = options(key, this.form, this.utils.prototype);
         this.setFieldSetOption(key, newOptions, optionsData, fieldSet);
       });
@@ -265,7 +266,7 @@ class Form {
     let optionsList = [];
     if (options instanceof Function) {
       optionsList = options(key, this.form, this.utils.prototype);
-      this.form.addEventListener("change", () => {
+      this.form.addEventListener("input", () => {
         const newOptions = options(key, this.form, this.utils.prototype);
         this.setSelectOption(newOptions, select);
       });
@@ -342,7 +343,7 @@ class Form {
       }
       if (input) {
         if (shapeData.onChange) {
-          input.addEventListener("change", () =>
+          input.addEventListener("input", () =>
             shapeData.onChange(key, this.form, this.utils.prototype)
           );
         }

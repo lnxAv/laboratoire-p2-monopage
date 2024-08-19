@@ -1,12 +1,11 @@
-const EMAIL_REGEX =
-  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const EMAIL_REGEX = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
-const getSavedEmail = () => {
+function getSavedEmail() {
   const email = JSON.parse(localStorage.getItem("email"));
   return email;
-};
+}
 
-const putEmail = (email) => {
+function putEmail(email) {
   let newEmails = JSON.parse(localStorage.getItem("email"));
   if (!newEmails) {
     newEmails = [email];
@@ -17,14 +16,14 @@ const putEmail = (email) => {
   }
 
   return newEmails;
-};
+}
 
-const getLogInEmail = () => {
+function getLogInEmail() {
   const email = localStorage.getItem("emailLogin");
   return email;
-};
+}
 
-const putLogInEmail = (email) => {
+function putLogInEmail(email) {
   const savedEmail = getSavedEmail();
   if (!savedEmail) return false;
   if (savedEmail.includes(email)) {
@@ -33,13 +32,13 @@ const putLogInEmail = (email) => {
   } else {
     return false;
   }
-};
+}
 
-const isLogged = () => {
+function isLogged() {
   const email = getLogInEmail();
   if (email) {
     return true;
   } else {
     return false;
   }
-};
+}
