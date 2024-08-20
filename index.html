@@ -6,10 +6,14 @@
     <link rel="stylesheet" href="Style/style.css">
     <link rel="stylesheet" href="Style/index.css">
     <script src="/JS/main.js" defer></script>
+    <script src="/JS/email.js"></script>
 </head>
 
-<body class="">
+<body>
     <div class="row space-between">
+        <div id="username" class="row display-none username">
+            Bonjour, Robing des bois
+        </div>
         <div>
         <button class="white">
             <h2> +1 (555) 555-5555 </h2>
@@ -23,17 +27,16 @@
                 <h2> Rejoint le club </h2>
             </button>
         </div>
-
     </div>
     <header id="header">
         <nav>
-            <button  onclick="goToMenu()">
-                <h3> Menu </h3>
-            </button>
-            <object class="company-logo" data="/public/Company.svg " type="image/svg+xml" height="50rem" width="50rem"></object>
-            <button class="dark" onclick="goToNewMember()">
-                <h3> connexion</h3>
-            </button>
+                <button  onclick="goToMenu()">
+                    <h3> Menu </h3>
+                </button>
+                <object class="company-logo" data="/public/Company.svg " type="image/svg+xml" height="50rem" width="50rem"></object>
+                <button id="connect-button" class="dark" onclick="goToNewMember()">
+                    <h3> connexion </h3>
+                </button>
         </nav>
     </header>
     <main>
@@ -77,6 +80,38 @@
         </div>
     </main>
     <script src="https://player.vimeo.com/api/player.js"></script>
+    <script defer>
+        // Load the IFrame Player and play the video
+        const iframe = document.querySelector('iframe');
+        const player = new Vimeo.Player(iframe);
+        player.setVolume(0.5);
+        player.on("loaded", () => {
+            player.play();
+        });
+    </script>
+    <script defer>
+        const username = document.getElementById("username");
+        const user = getUser();
+        console.log(user);
+        if (user) {
+            const connectButton = document.getElementById("connect-button");
+            connectButton.innerHTML = "<h3>Déconnexion</h3>";
+            connectButton.onclick = function () {
+                putLogInEmail(null);
+                putUser(null);
+                goToMenu();
+            }
+            username.classList.remove("display-none");
+            username.innerHTML = "Bonjour, " + user.nom;
+        }else{
+            const connectButton = document.getElementById("connect-button");
+            connectButton.innerHTML = "<h3>Connexion</h3>";
+            connectButton.onclick = function () {
+                goToNewMember();
+            }
+            username.classList.add("display-none");
+        }
+    </script>
 </body>
 
 </html>

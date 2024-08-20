@@ -170,6 +170,7 @@ class Form {
     const { pattern, required, type } = shapeData;
     const input = document.createElement("input");
     input.id = key;
+    input.name = key;
     input.type = type;
     // set pattern
     if (pattern) {
@@ -195,10 +196,10 @@ class Form {
       label.innerHTML = option;
       const input = document.createElement("input");
       input.type = type;
-      input.name = key;
       input.value = option;
       input.checked = option === selectedValue;
-      input.id = `${option}-${key}`;
+      input.id = key;
+      input.name = key;
       input.required = !!required;
       // set disabled event listener
       this.handleOnDisabled(key, optionsData, input);
@@ -342,11 +343,6 @@ class Form {
         element.appendChild(label, shapeData);
       }
       if (input) {
-        if (shapeData.onChange) {
-          input.addEventListener("input", () =>
-            shapeData.onChange(key, this.form, this.utils.prototype)
-          );
-        }
         element.appendChild(input);
       }
       this.form.appendChild(element);
@@ -366,7 +362,7 @@ class Form {
    */
   addEventListeners(eventName, func) {
     this.form.addEventListener(eventName, (event) => {
-      func(event, this.utils.prototype);
+      func(event, this.form, this.utils.prototype);
     });
   }
 }

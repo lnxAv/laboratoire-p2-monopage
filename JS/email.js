@@ -19,7 +19,7 @@ function putEmail(email) {
 }
 
 function getLogInEmail() {
-  const email = localStorage.getItem("emailLogin");
+  const email = JSON.parse(localStorage.getItem("emailLogin"));
   return email;
 }
 
@@ -27,7 +27,7 @@ function putLogInEmail(email) {
   const savedEmail = getSavedEmail();
   if (!savedEmail) return false;
   if (savedEmail.includes(email)) {
-    localStorage.setItem("emailLogin", email);
+    localStorage.setItem("emailLogin", JSON.stringify(email));
     return true;
   } else {
     return false;
@@ -41,4 +41,13 @@ function isLogged() {
   } else {
     return false;
   }
+}
+
+function getUser() {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return user;
+}
+
+function putUser(user) {
+  localStorage.setItem("user", JSON.stringify(user));
 }

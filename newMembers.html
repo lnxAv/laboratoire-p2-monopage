@@ -96,7 +96,7 @@
         // INIT THE FORM
         form.init();
         // ADD EVENT LISTENERS TO THE FORM
-        form.addEventListeners("submit", (event, utils) => {
+        form.addEventListeners("submit", (event, form, utils) => {
             event.preventDefault();
             if (utils.isValid()) {
                 const email = document.getElementById("email").value;

@@ -158,8 +158,9 @@ form {
     width: 100%;
     gap: var(--space-sm);
 }
-.form-row.display-none {
-    display: none;
+
+.display-none {
+    display: none !important;
 }
 
 .form-row-label {
@@ -290,6 +291,12 @@ span:hover {
     z-index: 100;
 }
 
+.username {
+  font-family: "Garamond-Regular";
+  font-size: var(--text-m);
+  color: var(--color-light);
+}
+
 .grainy-background::before{
     position: absolute;
     top: 0;
@@ -310,6 +317,7 @@ span:hover {
     flex-direction: row;
     align-items: center;
     gap: var(--space-m);
+    padding: var(--space-s);
 }
 
 .space-between {

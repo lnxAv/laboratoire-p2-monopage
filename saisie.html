@@ -193,14 +193,6 @@
         const form = new Form("saisie-form", formShape);
         // INIT THE FORM
         form.init();
-        // ADD EVENT LISTENERS TO THE FORM
-        form.addEventListeners("submit", (event, utils) => {
-            event.preventDefault();
-            if (utils.isValid()) {
-                alert("Youve joined the club");
-                goToMenu();
-            }
-        });
         const welcomeMessage = document.getElementById("welcome-message");
         const loggedEmail = getLogInEmail();
         if (loggedEmail) {
@@ -209,6 +201,20 @@
            alert("Please login");
            window.location.href = "/";
         }
+        // ADD EVENT LISTENERS TO THE FORM
+        form.addEventListeners("input", (event, form, utils) => { 
+            const user = Object.fromEntries(new FormData(form));
+            console.log(user);
+         });
+        form.addEventListeners("submit", (event, form, utils) => {
+            event.preventDefault();
+            if (utils.isValid()) {
+                alert("Youve joined the club");
+                const user = Object.fromEntries(new FormData(event.target, ));
+                putUser(user);
+                goToMenu();
+            }
+        });
     </script>
 </body>
 </html>
