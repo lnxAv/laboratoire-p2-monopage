@@ -6,17 +6,13 @@ function calculateAge(birthday) {
   return years;
 }
 
-function toDateInputValue(dateObject) {
-  const local = new Date(dateObject);
-  local.setMinutes(dateObject.getMinutes() - dateObject.getTimezoneOffset());
-  return local.toJSON().slice(0, 10);
-}
+/* FormObject.js
+ * @Class: FormUtils - Contain prototypes functions for the form
+ *               they can be called by the shapeData & the form
+ * @Class: Form - Create the form
+ */
 
-// FormObject.js
-// Contain FormUtils: prototypes functions for the form
-// Contain Form: class to create the form
-
-/* FORM UTILS
+/* @CLASS FormUtils
  * @description: Class that contains the prototypes of the form
  *               they can be called by the shapeData & the form
  * @param form: the form Element
@@ -110,7 +106,7 @@ class FormUtils {
   }
 }
 
-/* FORM
+/* @CLASS FormUtils
  * @description: Class that creates the form
  * @param formId: the id of the form to fill in the DOM
  * @param formShape: the shape of the form
