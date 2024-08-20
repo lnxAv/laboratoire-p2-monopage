@@ -50,6 +50,17 @@
 }
 /* KEYFRAMES */
 
+@keyframes wiggle {
+    0% {
+        rotate: -5deg
+    } 
+    50% {
+        rotate: 0deg
+    }
+    100% {
+        rotate: 5deg
+    }
+}
 /* TAGS */
 html{
     position: relative;
@@ -282,13 +293,17 @@ button[type="submit"] {
 span:hover {
     animation: slide-up 1s ease-in-out;
 }
-
 /* CLASSES */
 .company-logo {
+    cursor: pointer;
     transform: translateY(1rem) rotate(-10deg) scale(1.5);
     width: 10rem;
     height: 3rem;
-    z-index: 100;
+    z-index: 101;
+}
+
+.company-logo:hover {
+    animation: wiggle 1s linear infinite alternate;
 }
 
 .username {
