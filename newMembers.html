@@ -68,7 +68,10 @@
                     const email = document.getElementById(key).value;
                     const savedEmail = getSavedEmail();
                     const testRegex = EMAIL_REGEX.test(email);
-                    const testSaved = savedEmail.includes(email);
+                    let testSaved = false;
+                    if(savedEmail){
+                        testSaved = savedEmail.includes(email);
+                    }
                     if (!testRegex) {
                         utils.setMessage("Entrez un couriel valide", key);
                         utils.setValidity(false, key);
